@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Archita! - 20.02.2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        #root {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .birthday-container {
+            background: rgba(25, 25, 35, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            padding: 30px;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+        }
+        
+        .birthday-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .birthday-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(90deg, #ff0099, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .birthday-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        
+        .birthday-subtitle {
+            font-size: 1.4rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+        
+        .photo-carousel-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .carousel-circle {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            animation: rotateCarousel 30s linear infinite;
+        }
+        
+        .carousel-circle.paused {
+            animation-play-state: paused;
+        }
+        
+        @keyframes rotateCarousel {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .carousel-photo {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            transition: all 0.8s ease;
+            transform-origin: center center;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        
+        .carousel-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-photo.active {
+            width: 220px;
+            height: 220px;
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.5);
+            border-color: #ff7e5f;
+            transform: scale(1.1);
+        }
+        
+        .carousel-photo.active img {
+            transform: scale(1.05);
+        }
+        
+        .carousel-photo:hover:not(.active) {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 20;
+        }
+        
+        .carousel-btn {
+            background: rgba(255, 126, 95, 0.2);
+            border: 2px solid #ff7e5f;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(255, 126, 95, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .birthday-wish-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: rgba(40, 40, 60, 0.7);
+            border-radius: 20px;
+            border-left: 5px solid #ff0099;
+        }
+        
+        .wish-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .wish-title i {
+            font-size: 2.5rem;
+        }
+        
+        .birthday-wish {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        
+        .birthday-wish span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff7e5f;
+            display: block;
+            margin-top: 15px;
+        }
+        
+        .birthday-person {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 105, 180, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .person-icon {
+            font-size: 3rem;
+            color: #ff7e5f;
+            margin-right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .person-info h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .person-info p {
+            color: #aaa;
+        }
+        
+        .countdown-container {
+            background: rgba(30, 30, 50, 0.7);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 105, 180, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 100px;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff7e5f;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        
+        .interactive-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .interactive-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #ff0099 0%, #ff7e5f 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 126, 95, 0.2);
+            color: #ff7e5f;
+            border: 2px solid #ff7e5f;
+        }
+        
+        .interactive-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 105, 180, 0.4);
+        }
+        
+        .message-display {
+            background: rgba(40, 40, 60, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            display: none;
+            border-top: 3px solid #ff0099;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .message-display.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message-display h3 {
+            color: #ff7e5f;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff7e5f;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: floatUp 6s linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .photo-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 105, 180, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            color: #ff7e5f;
+            z-index: 20;
+        }
+        
+        .volume-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .volume-slider {
+            width: 100px;
+        }
+        
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .carousel-circle {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .birthday-title {
+                font-size: 3.5rem;
+            }
+            
+            .birthday-date {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .birthday-container {
+                padding: 20px;
+            }
+            
+            .birthday-title {
+                font-size: 2.8rem;
+            }
+            
+            .carousel-circle {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .carousel-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .carousel-photo.active {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 10px;
+            }
+            
+            .countdown-value {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio element for background music -->
+    <audio id="birthdayAudio" loop>
+        <source src="Pritam, Soham - In Dino (Pseudo Video).mp3" type="audio/mpeg">
+    
+    </audio>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const BirthdayWish = () => {
+            const [activeIndex, setActiveIndex] = useState(0);
+            const [isCarouselRunning, setIsCarouselRunning] = useState(true);
+            const [showMessage, setShowMessage] = useState(false);
+            const [hearts, setHearts] = useState([]);
+            const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+            const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+            const [volume, setVolume] = useState(0.3);
+            const audioRef = useRef(null);
+            
+            // Photo data
+            const photos = [
+                { id: 1, name: "iQOO Z6 Pro", date: "Mar 1, 2024", color: "#ff0099" },
+                { id: 2, name: "iQOO Z6 Pro", date: "Oct 16, 2023", color: "#ff7e5f" },
+                { id: 3, name: "Pro", date: "Jan 21, 2024", color: "#feb47b" },
+                { id: 4, name: "1000 ZS Pro", date: "Mar 1, 2024", color: "#00c9ff" },
+                { id: 5, name: "iQOO Z6 Pro", date: "Dec 20, 2024", color: "#7aff7a" }
+            ];
+            
+            // Initialize audio
+            useEffect(() => {
+                audioRef.current = document.getElementById('birthdayAudio');
+                if (audioRef.current) {
+                    audioRef.current.volume = volume;
+                }
+            }, []);
+            
+            // Update volume when volume state changes
+            useEffect(() => {
+                if (audioRef.current) {
+                    audioRef.current.volume = volume;
+                }
+            }, [volume]);
+            
+            // Calculate positions for circular carousel
+            const calculatePosition = (index, total) => {
+                const angle = (index / total) * 2 * Math.PI;
+                const radius = 180;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+                return { x, y };
+            };
+            
+            // Rotate carousel automatically
+            useEffect(() => {
+                let interval;
+                if (isCarouselRunning) {
+                    interval = setInterval(() => {
+                        setActiveIndex(prev => (prev + 1) % photos.length);
+                    }, 3000);
+                }
+                return () => clearInterval(interval);
+            }, [isCarouselRunning, photos.length]);
+            
+            // Calculate countdown to birthday (20.02.2026)
+            useEffect(() => {
+                const calculateTimeLeft = () => {
+                    const targetDate = new Date('2026-02-20T00:00:00');
+                    const now = new Date();
+                    const difference = targetDate.getTime() - now.getTime();
+                    
+                    if (difference > 0) {
+                        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                        
+                        setTimeLeft({ days, hours, minutes, seconds });
+                    }
+                };
+                
+                calculateTimeLeft();
+                const timer = setInterval(calculateTimeLeft, 1000);
+                return () => clearInterval(timer);
+            }, []);
+            
+            // Create floating hearts
+            useEffect(() => {
+                const heartInterval = setInterval(() => {
+                    if (hearts.length < 15) {
+                        const newHeart = {
+                            id: Date.now(),
+                            left: Math.random() * 100,
+                            size: Math.random() * 20 + 15,
+                            duration: Math.random() * 4 + 4
+                        };
+                        setHearts(prev => [...prev, newHeart]);
+                        
+                        setTimeout(() => {
+                            setHearts(prev => prev.filter(h => h.id !== newHeart.id));
+                        }, newHeart.duration * 1000);
+                    }
+                }, 800);
+                
+                return () => clearInterval(heartInterval);
+            }, [hearts.length]);
+            
+            // Function to play/pause music
+            const handlePlayMusic = () => {
+                if (audioRef.current) {
+                    if (isMusicPlaying) {
+                        audioRef.current.pause();
+                        setIsMusicPlaying(false);
+                    } else {
+                        audioRef.current.play()
+                            .then(() => {
+                                setIsMusicPlaying(true);
+                            })
+                            .catch(error => {
+                                console.error("Audio playback failed:", error);
+                                alert("গান প্লে করতে সমস্যা হচ্ছে। ব্রাউজার অটোপ্লে সেটিংস চেক করুন।");
+                            });
+                    }
+                }
+            };
+            
+            // Function to handle volume change
+            const handleVolumeChange = (e) => {
+                const newVolume = parseFloat(e.target.value);
+                setVolume(newVolume);
+                if (audioRef.current) {
+                    audioRef.current.volume = newVolume;
+                }
+            };
+            
+            const handlePrev = () => {
+                setActiveIndex(prev => (prev === 0 ? photos.length - 1 : prev - 1));
+                setIsCarouselRunning(false);
+                setTimeout(() => setIsCarouselRunning(true), 5000);
+            };
+            
+            const handleNext = () => {
+                setActiveIndex(prev => (prev + 1) % photos.length);
+                setIsCarouselRunning(false);
+                setTimeout(() => setIsCarouselRunning(true), 5000);
+            };
+            
+            const handlePhotoClick = (index) => {
+                setActiveIndex(index);
+                setIsCarouselRunning(false);
+                setTimeout(() => setIsCarouselRunning(true), 5000);
+            };
+            
+            const handleShowMessage = () => {
+                setShowMessage(!showMessage);
+            };
+            
+            const handleConfetti = () => {
+                for (let i = 0; i < 20; i++) {
+                    const newHeart = {
+                        id: Date.now() + i,
+                        left: Math.random() * 100,
+                        size: Math.random() * 25 + 20,
+                        duration: Math.random() * 3 + 3
+                    };
+                    setHearts(prev => [...prev, newHeart]);
+                    
+                    setTimeout(() => {
+                        setHearts(prev => prev.filter(h => h.id !== newHeart.id));
+                    }, newHeart.duration * 1000);
+                }
+            };
+            
+            // Render floating hearts
+            const renderHearts = () => {
+                return hearts.map(heart => (
+                    <div 
+                        key={heart.id}
+                        className="heart"
+                        style={{
+                            left: `${heart.left}%`,
+                            fontSize: `${heart.size}px`,
+                            animationDuration: `${heart.duration}s`
+                        }}
+                    >
+                        <i className="fas fa-heart"></i>
+                    </div>
+                ));
+            };
+            
+            return (
+                <div className="birthday-container">
+                    <div className="floating-hearts">
+                        {renderHearts()}
+                    </div>
+                    
+                    <div className="birthday-header">
+                        <h1 className="birthday-title">Happy Birthday Archita!</h1>
+                        <div className="birthday-date">20.02.2026</div>
+                        <p className="birthday-subtitle">Wishing you a day filled with joy, laughter, and beautiful memories as you celebrate another wonderful year!</p>
+                    </div>
+                    
+                    <div className="main-content">
+                        <div className="photo-carousel-container">
+                            <div className={`carousel-circle ${isCarouselRunning ? '' : 'paused'}`}>
+                                {photos.map((photo, index) => {
+                                    const position = calculatePosition(index, photos.length);
+                                    const isActive = index === activeIndex;
+                                    
+                                    return (
+                                        <div 
+                                            key={photo.id}
+                                            className={`carousel-photo ${isActive ? 'active' : ''}`}
+                                            style={{
+                                                left: `calc(50% + ${position.x}px)`,
+                                                top: `calc(50% + ${position.y}px)`,
+                                                transform: isActive ? 'translate(-50%, -50%) scale(1.1)' : 'translate(-50%, -50%)',
+                                                borderColor: isActive ? photo.color : 'transparent'
+                                            }}
+                                            onClick={() => handlePhotoClick(index)}
+                                        >
+                                            <img 
+                                                src={`3e7f739fad614a218c19405cccfedfe1.jpg`} 
+                                                alt={photo.name}
+                                                style={{ filter: `sepia(30%) hue-rotate(${index * 70}deg)` }}
+                                            />
+                                            <div style={{
+                                                position: 'absolute',
+                                                bottom: 0,
+                                                left: 0,
+                                                right: 0,
+                                                background: 'rgba(0,0,0,0.7)',
+                                                color: 'white',
+                                                padding: '5px',
+                                                fontSize: '0.8rem',
+                                                textAlign: 'center'
+                                            }}>
+                                                {photo.name} • {photo.date}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            
+                            <div className="photo-counter">
+                                <i className="fas fa-camera"></i> {activeIndex + 1} / {photos.length}
+                            </div>
+                            
+                            <div className="carousel-controls">
+                                <button className="carousel-btn" onClick={handlePrev}>
+                                    <i className="fas fa-chevron-left"></i>
+                                </button>
+                                <button className="carousel-btn" onClick={() => setIsCarouselRunning(!isCarouselRunning)}>
+                                    <i className={`fas fa-${isCarouselRunning ? 'pause' : 'play'}`}></i>
+                                </button>
+                                <button className="carousel-btn" onClick={handleNext}>
+                                    <i className="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className="birthday-wish-container">
+                            <div className="wish-title">
+                                <i className="fas fa-gift"></i> Birthday Wishes
+                            </div>
+                            
+                            <div className="birthday-person">
+                                <div className="person-icon">
+                                    <i className="fas fa-birthday-cake"></i>
+                                </div>
+                                <div className="person-info">
+                                    <h3>Archita</h3>
+                                    <p>Celebrating on 20th February 2026</p>
+                                </div>
+                            </div>
+                            
+                            <div className="birthday-wish">
+                                On this special day, I wish you endless happiness, success in all your endeavors, and love that grows with each passing year. May your birthday be as bright as your smile and as wonderful as you are!
+                                <span>Happy Birthday, Archita!</span>
+                            </div>
+                            
+                            <div className="countdown-container">
+                                <div className="countdown-title">Countdown to the Big Day</div>
+                                <div className="countdown">
+                                    <div className="countdown-item">
+                                        <div className="countdown-value">{timeLeft.days}</div>
+                                        <div className="countdown-label">Days</div>
+                                    </div>
+                                    <div className="countdown-item">
+                                        <div className="countdown-value">{timeLeft.hours}</div>
+                                        <div className="countdown-label">Hours</div>
+                                    </div>
+                                    <div className="countdown-item">
+                                        <div className="countdown-value">{timeLeft.minutes}</div>
+                                        <div className="countdown-label">Minutes</div>
+                                    </div>
+                                    <div className="countdown-item">
+                                        <div className="countdown-value">{timeLeft.seconds}</div>
+                                        <div className="countdown-label">Seconds</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="interactive-section">
+                        <button className="interactive-btn btn-primary" onClick={handleShowMessage}>
+                            <i className="fas fa-envelope"></i> {showMessage ? "Hide Message" : "Special Message"}
+                        </button>
+                        
+                        <button className="interactive-btn btn-secondary" onClick={handleConfetti}>
+                            <i className="fas fa-birthday-cake"></i> Launch Confetti
+                        </button>
+                        
+                        <button className="interactive-btn btn-primary" onClick={handlePlayMusic}>
+                            <i className={`fas fa-${isMusicPlaying ? 'pause' : 'music'}`}></i> 
+                            {isMusicPlaying ? "pause Music" : "Play Music"}
+                        </button>
+                    </div>
+                    
+                    {/* Volume control - only visible when music is playing */}
+                    {isMusicPlaying && (
+                        <div className="volume-control">
+                            <i className="fas fa-volume-up" style={{color: "#ff7e5f"}}></i>
+                            <input 
+                                type="range" 
+                                min="0" 
+                                max="1" 
+                                step="0.1"
+                                value={volume}
+                                onChange={handleVolumeChange}
+                                className="volume-slider"
+                            />
+                            <span style={{color: "#ff7e5f", fontSize: "0.9rem"}}>
+                                {Math.round(volume * 100)}%
+                            </span>
+                        </div>
+                    )}
+                    
+                    <div className={`message-display ${showMessage ? 'show' : ''}`}>
+                        <h3><i className="fas fa-heart"></i> A Special Note for You</h3>
+                        <p>Dear Archita, as you celebrate your birthday on 20.02.2026, may this year bring you closer to your dreams and fill your life with beautiful moments. Each photo in the carousel represents a memory, and I hope this year adds many more wonderful memories to your collection. Wishing you health, happiness, and all the success you deserve. Have an amazing birthday!</p>
+                    </div>
+                    
+                    <div className="footer-note">
+                        Made with <i className="fas fa-heart" style={{color: "#ff7e5f"}}></i> for Archita's Birthday | 20.02.2026 | Photo Carousel with Zoom Effect
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            return <BirthdayWish />;
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
